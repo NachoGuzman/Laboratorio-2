@@ -34,5 +34,19 @@ personaje_salta = [
     pygame.image.load("Juego\Movimiento personaje principal/139.png")
 ]
 
+enemigo_camina = [
+    pygame.image.load("Juego\Movimiento personaje principal\91.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\92.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\93.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\94.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\95.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\96.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\97.png"),
+    pygame.image.load("Juego\Movimiento personaje principal\98.png"),
+]
+
 personaje_camina_izquierda = girar_imagenes(personaje_camina, True, False)
+enemigo_camina_izquierda = girar_imagenes(enemigo_camina, True, False)
+
+
 

@@ -1,6 +1,8 @@
-import pygame, sys
+import pygame
 from configuraciones import *
 from modo import *
+from Plataformas import *
+from Enemigos import Enemigos
 
 weight, height = 1900 , 900
 
@@ -56,6 +58,15 @@ rectangulo_personaje.y = y_inicial
 piso = pygame.Rect(0,0, weight, 20)
 piso.top = rectangulo_personaje.bottom
 
+#Pruebas con la class Plataformas
+plataforma_uno = Plataformas(400, 75, "Juego/background\plataforma.png", 1200, 760)
+#plataforma_dos= Plataformas(400, 75, "Juego/background\plataforma.png", 300, 760)
+#plataforma_tres= Plataformas(400, 75, "Juego/background\plataforma.png", 400, 600)
+
+#Pruebas con la class Enemigos
+#enemigo_uno= Enemigos(100,125,100, 100, 2)
+
+
 
 
 def mover_personaje(rectangulo_personaje: pygame.Rect, velocidad):
@@ -110,6 +121,9 @@ def actualizar_pantalla(pantalla, accion,lados_personaje, velocidad, plataformas
 
     pantalla.blit(fondo,(0,0))
     pantalla.blit(plataforma,(rectangulo_plataforma.x, rectangulo_plataforma.y))
+    pantalla.blit(plataforma_uno.image, plataforma_uno.rect)
+    #pantalla.blit(plataforma_dos.image, plataforma_dos.rect)
+    #pantalla.blit(plataforma_tres.image, plataforma_tres.rect)
 
 
     match accion:
@@ -128,13 +142,17 @@ def actualizar_pantalla(pantalla, accion,lados_personaje, velocidad, plataformas
         case "Quieto":
             if not esta_saltando:
                 animar_personaje(pantalla, lados_personaje ["main"], personaje_quieto)
+    
+
 
     aplicar_gravedad(pantalla, personaje_salta, lados_personaje, plataformas)
 
 lados_personaje = obtener_rectangulos(rectangulo_personaje)
 lados_piso = obtener_rectangulos(piso)
 lados_plataforma = obtener_rectangulos(rectangulo_plataforma)
-lados_personaje = obtener_rectangulos(rectangulo_personaje)
+#plataforma_uno_lados = obtener_rectangulos(plataforma_uno)
 
-lista_plataformas = [lados_piso, lados_plataforma]
+lista_plataformas = [lados_piso, lados_plataforma, plataforma_uno]
+
+
 

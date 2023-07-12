@@ -1,7 +1,7 @@
 import pygame, sys
-from configuraciones import *
 from modo import *
 from funciones import *
+from GUI_form_prueba import FormPrueba
 
 #dimensiones de la ventana
 weight, height = 1900 , 900
@@ -20,12 +20,14 @@ PANTALLA.blit(fondo,(0,0))
 #Reloj para los Fps
 RELOJ = pygame.time.Clock()
 
+#from_prueba = FormPrueba(PANTALLA, 0, 0, 1000, 700, "gold", "Magenta", 5, True)
+
 while True:
     RELOJ.tick(FPS)
 
-    #pygame.set_error(DEBUG)
 
-    for evento in pygame.event.get():
+    eventos = pygame.event.get()
+    for evento in eventos:
         if evento.type == pygame.QUIT:
             pygame.quit()
             sys.exit(0)
@@ -37,12 +39,13 @@ while True:
 
     if(keys[pygame.K_RIGHT] and rectangulo_personaje.x < weight - rectangulo_personaje.width):
         accion = "Derecha"
-    elif(keys[pygame.K_LEFT]):
+    elif(keys[pygame.K_LEFT] and rectangulo_personaje.x > 0):
         accion = "Izquierda"
     elif(keys[pygame.K_UP]):
         accion = "Salta"
     else:
         accion = "Quieto"
+
 
     PANTALLA.blit(fondo,(0,0))
     
@@ -57,5 +60,10 @@ while True:
 
         for lado in lados_plataforma:
             pygame.draw.rect(PANTALLA, "Red", lados_plataforma[lado], 2)
+            
+
+
+
+    #from_prueba.update(eventos)
 
     pygame.display.update()

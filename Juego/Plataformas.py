@@ -1,14 +1,13 @@
 import pygame
 
 class Plataformas():
-    def __init__(self, width, height):
-        super().__init__()
-        self.image = pygame.image.load("Juego/background\plataforma.png")
+    def __init__(self, width, height, path, x, y):
+        self.image = pygame.image.load(path)
         self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
-def crear_plataforma(x, y, width, height):
-    plataforma = Plataformas(width, height)
-    plataforma.rect.x = x
-    plataforma.rect.y = y
-    return plataforma
+
+
+
